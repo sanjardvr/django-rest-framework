@@ -15,4 +15,5 @@ def api_home(request, *args, **kwargs):
     if instance:
         # data = model_to_dict(model_data, fields=['__all__'])
         data = ProductSerializer(instance).data
-        return Response(data)
+    
+    return Response(data)
