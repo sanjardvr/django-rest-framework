@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.decorators import api_view 
@@ -11,7 +12,10 @@ class ProductDetailedAPIView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     # lookup_field = 'pk'
 
+
+@extend_schema(tags=["Продукты"])
 class ProductListCreateAPIView(generics.ListCreateAPIView):
+    """The description will appear automatically"""
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -42,11 +46,6 @@ class ProductDestroyAPIView(generics.DestroyAPIView):
 # class ProductListAPIView(generics.ListAPIView):
 #     queryset = Product.objects.all()
 #     serializer_class = ProductSerializer
-
-
-
-
-
 
 
 # !JUST FOR INFO HERE, FUNCTION BASED API VIES ARE TOO MASSY

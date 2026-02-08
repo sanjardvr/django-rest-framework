@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 from pathlib import Path
 
+from drf_spectacular.settings import SPECTACULAR_DEFAULTS
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,6 +31,21 @@ DEBUG = os.environ.get("DJANGO_DEBUG")
 ALLOWED_HOSTS = []
 
 
+# Documentation settings
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Sanjars Example API',
+    'DESCRIPTION': 'Sanjars Example API using Django Rest Framework',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third party
     'rest_framework',
+    'drf_spectacular',
     # Internal
     "apps.api",
     "apps.product"
